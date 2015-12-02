@@ -11,7 +11,9 @@
 <?= $this->table->generate($Products) ?>
 <script type="text/javascript" charset="utf-8">
 $(document).ready(function() {
-$('#productsTable').DataTable();
+$('#productsTable').DataTable({
+	
+});
 } );
 </script>
 </head>
