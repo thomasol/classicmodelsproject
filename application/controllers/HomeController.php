@@ -10,10 +10,12 @@ class HomeController extends CI_Controller {
     if($this->session->userdata('logged_in')) {
      $session_data = $this->session->userdata('logged_in');
      $data['username'] = $session_data['username'];
+     $this->load->view('headerLoggedIn', $data);
 	   $this->load->view('index', $data);
    }
    else 
-     $this->load->view('login');
+    $this->load->view('header');
+    $this->load->view('login');
    }
 }
 

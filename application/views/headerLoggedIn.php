@@ -89,7 +89,10 @@
 								<li><a href="<?php echo site_url('ProductController/checkout'); ?>"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="<?php echo site_url('CheckoutController/checkout'); ?>"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="<?php echo site_url('CartController/cart'); ?>"></i> Cart</a></li>
-								<li><a href="<?php echo site_url('UserController/login'); ?>"><i class="fa fa-lock"></i> Login</a></li>
+								<li><a href="<?php echo site_url('UserController/logout'); ?>"><i class="fa fa-lock"></i> Logout</a></li>
+								<?php echo "Logged in as " . $username;
+								?>
+
 							</ul>
 						</div>
 					</div>

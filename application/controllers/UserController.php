@@ -11,11 +11,13 @@ class UserController extends CI_Controller {
 		if($this->session->userdata('logged_in'))
 		{
 		    $session_data = $this->session->userdata('logged_in');
-		    $data['username'] = $session_data['username'];			 
-	        $this->load->view('index', $data);
+		    $data['username'] = $session_data['username'];	
+		    $this->load->view('headerLoggedIn', $data);	 
+	        $this->load->view('index');
 	    }
 	    else
 	    {
+	    	$this->load->view('header');
 	    	$this->load->view('index');
 	    }
 	}
@@ -33,6 +35,7 @@ class UserController extends CI_Controller {
 
 		if($this->form_validation->run() == false) 
 		{
+			$this->load->view('header');
 			$this->load->view('login');
 		}
 		else
@@ -55,7 +58,8 @@ class UserController extends CI_Controller {
 			}
 			else
 			{
-				return false;
+				$this->load->view('header');
+				$this->load->view('login');
 			}
 		}
 	}
@@ -80,7 +84,6 @@ class UserController extends CI_Controller {
 
 	public function registration()
 	{
-
 		$this->form_validation->set_rules('customerName', 'Customer Name', 'trim|required|min_length[4]|is_unique[customers.customerName]', array('is_unique' => 'This username already exists. Please choose another one.'));
 		$this->form_validation->set_rules('fName', 'First Name', 'trim|required|min_length[2]');
 		$this->form_validation->set_rules('lName', 'Last Name', 'trim|required|min_length[2]');
@@ -98,6 +101,7 @@ class UserController extends CI_Controller {
 
 		if($this->form_validation->run() == FALSE)
 		{
+			$this->load->view('header');
 			$this->load->view('login');
 		}
 		else
@@ -116,12 +120,16 @@ class UserController extends CI_Controller {
 			$country = $this->input->post('country');
 			if ($this->UserModel->registerUser($customerName, $firstName, $lastName, $email, $password, $phone, $address1, $address2, $city, $state, $postalCode, $country))
 			{
-				$this->load->view('index');
+				$sess_array = array(
+				    'username'=>$email
+				);
+				$this->session->set_userdata('logged_in', $sess_array);
+				redirect('HomeController');
 			}
 			else
 			{
 				$data->error = 'There was a problem creating your account. Please try again.';
-
+				$this->load->view('header');
 				$this->load->view('login');
 			}
 		}
@@ -129,14 +137,9 @@ class UserController extends CI_Controller {
 
 	public function logout()
 	{
-		$newdata = array(
-			'userName' => '',
-			'userEmail' => '',
-			'loggedIn' => FALSE,
-			);
-		$this->session->unset_userdata($newdata);
+		$this->session->unset_userdata('logged_in');
 		$this->session->sess_destroy();
-		$this->index();
+		redirect('HomeController');
 	}
 
 	public function contactUs()
@@ -145,7 +148,7 @@ class UserController extends CI_Controller {
 		{
 		    $session_data = $this->session->userdata('logged_in');
 		    $data['username'] = $session_data['username'];			 
-	        $this->load->view('contactUS', $data);
+	        $this->load->view('contactUs', $data);
 	    }
 	    else
 	    {

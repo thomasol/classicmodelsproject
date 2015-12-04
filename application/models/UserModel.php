@@ -8,12 +8,13 @@ class UserModel extends CI_Model
 
 	public function registerUser($customerName, $firstName, $lastName, $email, $password, $phone, $address1, $address2, $city, $state, $postalCode, $country) 
 	{
+		$password = MD5($password);
 	    $data = array(
 			'customerName' => $customerName,
 			'contactFirstName' => $firstName,
 			'contactLastName' => $lastName,
 			'email' => $email,
-			'password' => $this->hashPassword($password),
+			'password' => $password,
 			'phone' => $phone,
 			'addressLine1' => $address1,
 			'addressLine2' => $address2,
@@ -39,7 +40,6 @@ class UserModel extends CI_Model
 			return $query->result_array();
 	   else
 			return false;
-  
 	}	
 }
 ?>

@@ -1,33 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Login | Mini Things</title>
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>" />
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/font-awesome.min.css"); ?>" />
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/prettyPhoto.css"); ?>" />
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/price-range.css"); ?>" />
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/animate.css"); ?>" />
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/main.css"); ?>" />
-    <link rel="stylesheet" href="<?php echo base_url("assets/css/responsive.css"); ?>" />
-    <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->       
-    <link rel="shortcut icon" href="<?php echo base_url("assets/images/ico/favicon.ico"); ?>" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url("assets/images/ico/apple-touch-icon-144-precomposed.png"); ?>" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url("images/ico/apple-touch-icon-114-precomposed.png"); ?>" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url("images/ico/apple-touch-icon-72-precomposed.png"); ?>" />
-    <link rel="apple-touch-icon-precomposed" href="<?php echo base_url("images/ico/apple-touch-icon-57-precomposed.png"); ?>" />
-</head><!--/head-->
-
-<?php
-	$this->load->view('header');
-?>
-
 	<section id="form">
 		<div class="container">
 			<div class="row">
@@ -36,12 +6,12 @@
 						<h2>Login to your account</h2>
 						<?php
 						    echo validation_errors();
-							$attributesLogin = array("name" => "loginForm");
+							$attributesLogin = array("name" => "loginForm", "autocomplete" => "off");
 							echo form_open("UserController/login", $attributesLogin);
 						?>
 						
-							<input type="text" name="username" placeholder="Username" value="<?php echo set_value('username'); ?>" />
-							<input type="password" name="password" placeholder="Password" value="<?php echo set_value('password'); ?>"/>
+							<input type="text" autocomplete="off" name="username" placeholder="Username" value="<?php echo set_value('username'); ?>" />
+							<input type="password" autocomplete="off" name="password" placeholder="Password" value="<?php echo set_value('password'); ?>"/>
 							<span>
 								<input type="checkbox" name="rememberMe" value="rememberMe" class="checkbox"> 
 								Remember Me
@@ -148,5 +118,12 @@
 	<script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
+    <script>
+    $(document).ready(function(){ 
+    $("input").attr("autocomplete", "off"); 
+});
+    	$('loginForm').attr('autocomplete', 'off');
+    </script>
+
 </body>
 </html>
