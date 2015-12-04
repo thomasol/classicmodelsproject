@@ -72,7 +72,7 @@
 									}
 									else
 									{
-										echo "Logged in as " $username;
+										echo "Logged in as " . $username;
 									}
 								?>
 

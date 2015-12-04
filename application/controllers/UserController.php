@@ -41,7 +41,7 @@ class UserController extends CI_Controller {
 			$password = $this->input->post('password');
 
 			$result = $this->UserModel->login($username, $password);
-			print_r($result);
+			//print_r($result);
 			if($result)
 			{
 				foreach($result as $row) 
@@ -50,7 +50,7 @@ class UserController extends CI_Controller {
 						'username'=>$username
 				);
 				$this->session->set_userdata('logged_in', $sess_array);
-				$this->load->view('index');
+				redirect('HomeController');
 				}
 			}
 			else

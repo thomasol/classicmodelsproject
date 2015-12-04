@@ -34,8 +34,16 @@ class ProductController extends CI_Controller {
 			$img = $row['image'];
 			$row['image'] = img("assets/images/thumbs/" . $img);
 		}
-
-		$this->load->view('displayTable', $data);
+		if($this->session->userdata('logged_in'))
+		{
+		    $session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];			 
+	        $this->load->view('displayTable', $data);
+	    }
+	    else
+	    {
+	    	$this->load->view('displayTable', $data);
+	    }
 	}
 
 	public function propductDetails()
