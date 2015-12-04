@@ -8,24 +8,60 @@ class UserController extends CI_Controller {
 
 	public function index()
 	{
-	    $this->load->view('index');
+		if($this->session->userdata('logged_in'))
+		{
+		    $session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];			 
+	        $this->load->view('index', $data);
+	    }
+	    else
+	    {
+	    	$this->load->view('index');
+	    }
 	}
 
 	public function login()
 	{
 		if($this->session->userdata('logged_in'))
-	    {
-	        $this->load->view("index", $data);
-	    }
-	    else
-	    {
-	        $this->load->view('login');
-	  	}
+		{
+			$session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];	
+			$this->load->view('index', $data);
+		}
+		$this->form_validation->set_rules('username', 'Username', 'required');
+		$this->form_validation->set_rules('password', 'Password', 'required');
+
+		if($this->form_validation->run() == false) 
+		{
+			$this->load->view('login');
+		}
+		else
+		{
+			$username = $this->input->post('username');
+			$password = $this->input->post('password');
+
+			$result = $this->UserModel->login($username, $password);
+			print_r($result);
+			if($result)
+			{
+				foreach($result as $row) 
+				{
+					$sess_array = array(
+						'username'=>$username
+				);
+				$this->session->set_userdata('logged_in', $sess_array);
+				$this->load->view('index');
+				}
+			}
+			else
+			{
+				return false;
+			}
+		}
 	}
 
 	public function verifyLogin()
 	{
-		$data = StdClass();
 
 		$email = $this->input->post('email');
 		$password = md5($this->input->post('pass'));
@@ -48,7 +84,7 @@ class UserController extends CI_Controller {
 		$this->form_validation->set_rules('customerName', 'Customer Name', 'trim|required|min_length[4]|is_unique[customers.customerName]', array('is_unique' => 'This username already exists. Please choose another one.'));
 		$this->form_validation->set_rules('fName', 'First Name', 'trim|required|min_length[2]');
 		$this->form_validation->set_rules('lName', 'Last Name', 'trim|required|min_length[2]');
-		$this->form_validation->set_rules('email', 'Your Email', 'trim|required|valid_email|is_unique[customers.email]');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[customers.email]', array('isUnique' => 'This email already exists, try logging in.'));
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|min_length[6]');
 		$this->form_validation->set_rules('cPassword', 'Password Confirmation', 'trim|required|min_length[6]|matches[password]');
 		$this->form_validation->set_rules('phone', 'Phone Number', 'trim|required|min_length[6]|max_length[20]|numeric');
@@ -105,7 +141,16 @@ class UserController extends CI_Controller {
 
 	public function contactUs()
 	{
-		$this->load->view('contactUs');
+		if($this->session->userdata('logged_in'))
+		{
+		    $session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];			 
+	        $this->load->view('contactUS', $data);
+	    }
+	    else
+	    {
+	    	$this->load->view('contactUs');
+	    }
 	}
 }
 ?>

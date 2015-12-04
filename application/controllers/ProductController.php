@@ -38,19 +38,18 @@ class ProductController extends CI_Controller {
 		$this->load->view('displayTable', $data);
 	}
 
-	function checkout() 
+	public function propductDetails()
 	{
-		$this->load->view('checkout');
-	}
-
-	function cart() 
-	{
-		$this->load->view('cart');
-	}
-
-	public function productDetails()
-	{
-		$this->load->view('productDetails');
+		if($this->session->userdata('logged_in'))
+		{
+		    $session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];			 
+	        $this->load->view('productDetails', $data);
+	    }
+	    else
+	    {
+	    	$this->load->view('productDetails');
+	    }
 	}
 }
 ?>

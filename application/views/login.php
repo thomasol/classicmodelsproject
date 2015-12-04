@@ -34,15 +34,20 @@
 				<div class="col-sm-4 col-sm-offset-1">
 					<div class="login-form">
 						<h2>Login to your account</h2>
-						<form action="#">
-							<input type="text" placeholder="Name" />
-							<input type="email" placeholder="Email Address" />
+						<?php
+						    echo validation_errors();
+							$attributesLogin = array("name" => "loginForm");
+							echo form_open("UserController/login", $attributesLogin);
+						?>
+						
+							<input type="text" name="username" placeholder="Username" value="<?php echo set_value('username'); ?>" />
+							<input type="password" name="password" placeholder="Password" value="<?php echo set_value('password'); ?>"/>
 							<span>
-								<input type="checkbox" class="checkbox"> 
-								Keep me signed in
+								<input type="checkbox" name="rememberMe" value="rememberMe" class="checkbox"> 
+								Remember Me
 							</span>
 							<button type="submit" class="btn btn-default">Login</button>
-						</form>
+						<?php echo form_close(); ?>
 					</div>
 				</div>
 				<div class="col-sm-1">
@@ -54,8 +59,9 @@
 					<h2>New User Signup!</h2>
 
 					<?php 
-						$attributes = array("name" => "registrationform");
-						echo form_open("UserController/registration", $attributes);
+					    echo validation_errors();
+						$attributesSignUp = array("name" => "registrationform");
+						echo form_open("UserController/registration", $attributesSignUp);
 					?>
 				<div>
                     <input name="fName" placeholder="Your First Name" type="text" value="<?php echo set_value('fName'); ?>" />

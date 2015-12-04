@@ -8,7 +8,16 @@ class CartController extends CI_Controller {
 
 	public function cart()
 	{
-		$this->load->view('cart.php');
+		if($this->session->userdata('logged_in'))
+		{
+		    $session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];			 
+	        $this->load->view('cart', $data);
+	    }
+	    else
+	    {
+	    	$this->load->view('cart');
+	    }
 	}
 }
 ?>

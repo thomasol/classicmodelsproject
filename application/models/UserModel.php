@@ -1,30 +1,13 @@
 <?php
-class UserModel extends CI_Model {
-	 function __construct() {
+class UserModel extends CI_Model 
+{
+	 function __construct() 
+	 {
         parent::__construct();
     }
 
-	 function login($email, $password) {
-		$this->db->where("email", $email);
-		$this->db->where("password", MD5($password));
-
-		$query=$this->db->get("user");
-		if($query->num_rows() > 0) {
-		 foreach($query->result() as $rows) {
-		      $newdata = array(
-		      'user_id'  => $rows->customerNumber,
-		      'user_name'  => $rows->customerName,
-		      'user_email'    => $rows->email,
-		      'logged_in'  => TRUE,
-		    );
-		  }
-		   $this->session->set_userdata($newdata);
-		   return true;
-	    }
-		  return false;
-	}
-
-	function registerUser($customerName, $firstName, $lastName, $email, $password, $phone, $address1, $address2, $city, $state, $postalCode, $country) {
+	public function registerUser($customerName, $firstName, $lastName, $email, $password, $phone, $address1, $address2, $city, $state, $postalCode, $country) 
+	{
 	    $data = array(
 			'customerName' => $customerName,
 			'contactFirstName' => $firstName,
@@ -43,9 +26,20 @@ class UserModel extends CI_Model {
 		return $this->db->insert('customers', $data);
 	}
 
-	function hashPassword($password)
-	{
-		return md5($password);
-	}
+	function login($username, $password) {
+		$this -> db -> select('email, password');
+		$this -> db -> from('customers');
+		$this -> db -> where('email', $username);
+		$this -> db -> where('password', MD5($password));
+		$this -> db -> limit(1);
+ 
+		$query = $this -> db -> get();
+ 
+		if($query -> num_rows() == 1) 
+			return $query->result_array();
+	   else
+			return false;
+  
+	}	
 }
 ?>

@@ -29,6 +29,7 @@
 	<?php
 		$this->load->view('header');
 	?>
+	
 	<section id="cart_items">
 		<div class="container">
 			<div class="breadcrumbs">

@@ -6,9 +6,18 @@ class CheckoutController extends CI_Controller {
 		parent::__construct();
 	}
 
-	public function checkout() 
+	public function checkout()
 	{
-		$this->load->view('checkout');
+		if($this->session->userdata('logged_in'))
+		{
+		    $session_data = $this->session->userdata('logged_in');
+		    $data['username'] = $session_data['username'];			 
+	        $this->load->view('checkout', $data);
+	    }
+	    else
+	    {
+	    	$this->load->view('checkout');
+	    }
 	}
 }
 ?>
