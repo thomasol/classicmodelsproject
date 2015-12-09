@@ -11,11 +11,13 @@ class CartController extends CI_Controller {
 		if($this->session->userdata('logged_in'))
 		{
 		    $session_data = $this->session->userdata('logged_in');
-		    $data['username'] = $session_data['username'];			 
+		    $data['username'] = $session_data['username'];	
+		    $this->load->view('headerLoggedIn');	 
 	        $this->load->view('cart', $data);
 	    }
 	    else
 	    {
+	    	$this->load->view('header');
 	    	$this->load->view('cart');
 	    }
 	}

@@ -1,4 +1,4 @@
-	<section id="slider"><!--slider-->
+	<section id="slider">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
@@ -8,6 +8,7 @@
 							<li data-target="#slider-carousel" data-slide-to="1"></li>
 							<li data-target="#slider-carousel" data-slide-to="2"></li>
 						</ol>
+						
 						
 						<div class="carousel-inner">
 							<div class="item active">

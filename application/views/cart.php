@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Cart | E-Shopper</title>
+    <title>Cart | Mini Things</title>
     <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>" />
     <link rel="stylesheet" href="<?php echo base_url("assets/css/font-awesome.min.css"); ?>" />
     <link rel="stylesheet" href="<?php echo base_url("assets/css/prettyPhoto.css"); ?>" />
@@ -22,12 +22,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url("images/ico/apple-touch-icon-114-precomposed.png"); ?>" />
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url("images/ico/apple-touch-icon-72-precomposed.png"); ?>" />
     <link rel="apple-touch-icon-precomposed" href="<?php echo base_url("images/ico/apple-touch-icon-57-precomposed.png"); ?>" />
-</head><!--/head-->
-
-<?php
-	$this->load->view('header');
-?>
-
+</head>
 
 	<section id="cart_items">
 		<div class="container">
@@ -55,11 +50,11 @@
 								<a href=""><img src="images/cart/one.png" alt=""></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
+								<h4><a href=""></a></h4>
+								<p></p>
 							</td>
 							<td class="cart_price">
-								<p>$59</p>
+								<p></p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
@@ -69,7 +64,7 @@
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
+								<p class="cart_total_price"></p>
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
@@ -81,11 +76,11 @@
 								<a href=""><img src="images/cart/two.png" alt=""></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
+								<h4><a href=""></a></h4>
+								<p></p>
 							</td>
 							<td class="cart_price">
-								<p>$59</p>
+								<p></p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
@@ -95,7 +90,7 @@
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
+								<p class="cart_total_price"></p>
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
@@ -106,11 +101,11 @@
 								<a href=""><img src="images/cart/three.png" alt=""></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">Colorblock Scuba</a></h4>
-								<p>Web ID: 1089772</p>
+								<h4><a href=""></a></h4>
+								<p></p>
 							</td>
 							<td class="cart_price">
-								<p>$59</p>
+								<p></p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
@@ -120,7 +115,7 @@
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price">$59</p>
+								<p class="cart_total_price"></p>
 							</td>
 							<td class="cart_delete">
 								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
