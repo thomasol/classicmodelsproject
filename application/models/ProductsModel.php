@@ -9,11 +9,32 @@ class ProductsModel extends CI_Model {
 	$resultset = $this->db->get('products');
 	return $resultset->result_array();
 	}
-SixRandomProducts() {
-	$this->db->limit(6);
+ function getSixRandomProducts() {
+	$this->db->limit(3);
+	$this->db->order_by('productCode', 'RANDOM');
 	$resultset = $this->db->get('products');
 
 	return $resultset->result_array();
 	}
+
+function getFeaturedItems() {
+	$this->db->limit(6);
+	$this->db->where('featuredItem', 1);
+	// $resultset = $this->db->get_where('products', array('featuredItem = 1'));
+	$resultset = $this->db->get('products');
+	return $resultset->result_array();
+	}
+function getCategories() {
+	$this->db->group_by('productLine');
+	$resultset = $this->db->get('products');
+
+	return $resultset->result_array();
+}	
+function getProductsFromCategory($category) {
+	$this->db->group_by('productLine');
+	$this->db->where('productLine', $category['productLine']);
+	$resultset = $this->db->get('products');
+	return $resultset->result_array();
+}
 }
 ?>

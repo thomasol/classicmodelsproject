@@ -8,26 +8,10 @@ class UserController extends CI_Controller {
 
 	public function index()
 	{
-		$sixRandomProducts = $this->productsModel->getSixRandomProducts();
-
-		foreach ($sixRandomProducts as $value) 
-		{
-			echo '<div class="carousel-inner">';
-			echo '<div class="item active">';
-			echo '<div class="col-sm-6">';
-			echo '<h1><span>MINI</span>THINGS</h1>';
-			echo '<h2>Classic Models Shop</h2>';
-			echo '<p></p>
-						<button type="button" class="btn btn-default get">Get it now</button>
-					</div>
-					<div class="col-sm-6">
-						<img src="<?php echo base_url("assets/images/products/S10_1678.jpg"); ?>" class="girl img-responsive" alt="" />
-						<img src="<?php echo base_url("assets/images/home/pricing.png"); ?>" class="pricing" alt="" />
-					</div>
-				</div>
-			</div>
-		}
-
+		$data['sixRandomProducts'] = $this->ProductsModel->getSixRandomProducts();
+		$data['featuredItems'] = $this->ProductsModel->getFeaturedItems();
+		$data['categories'] = $this->ProductsModel->getCategories();
+		$data['b'] = $this->ProductsModel->getAllProducts();
 		if($this->session->userdata('logged_in'))
 		{
 		    $session_data = $this->session->userdata('logged_in');
@@ -37,7 +21,7 @@ class UserController extends CI_Controller {
 	    }
 	    else
 	    {
-	    	$this->load->view('header');
+	    	$this->load->view('header', $data);
 	    	$this->load->view('index');
 	    }
 	}
