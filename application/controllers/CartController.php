@@ -21,5 +21,19 @@ class CartController extends CI_Controller {
 	    	$this->load->view('cart');
 	    }
 	}
+	public function addToCart() {
+ 
+		$insertItem = array(
+			'image' => $this->input->post('image'),
+			'id' => $this->input->post('id'),
+			'name' => $this->input->post('name'),
+			'price' => $this->input->post('price'),
+			'qty' => 1
+		);		
+	 
+		$this->cart->insert($insertItem);
+	 
+		$this->load->view('cart');
+	}
 }
 ?>

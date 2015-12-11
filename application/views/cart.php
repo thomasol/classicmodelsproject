@@ -47,7 +47,16 @@
 					<tbody>
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="images/cart/one.png" alt=""></a>
+							<?php
+									//echo '<img src="assets/images/products/' . $cartItem['image'] . '"); "/>';
+									foreach ($this->cart->contents() as $item) {
+										$imagePath = "assets/images/products/" . $item['image'];
+    									$url = base_url().$imagePath; 
+    									?>
+										<img src="<?php echo $url;?>"/>
+										<?php
+									}
+									?>
 							</td>
 							<td class="cart_description">
 								<h4><a href=""></a></h4>

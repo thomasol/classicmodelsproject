@@ -24,35 +24,32 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url("images/ico/apple-touch-icon-72-precomposed.png"); ?>" />
     <link rel="apple-touch-icon-precomposed" href="<?php echo base_url("images/ico/apple-touch-icon-57-precomposed.png"); ?>" />
 
-	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/DataTables-1.10.9/media/css/jquery.dataTables.css') ?>">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/DataTables/media/css/jquery.dataTables.css') ?>">
 	<script type="text/javascript" language="javascript"
-	 	src="<?= base_url('assets/DataTables-1.10.9/media/js/jquery.js') ?>">
+	 	src="<?= base_url('assets/DataTables/media/js/jquery.js') ?>">
 	 </script>
 	<script type="text/javascript" language="javascript" 
-	 	src="<?= base_url('assets/DataTables-1.10.9/media/js/jquery.dataTables.js')
+	 	src="<?= base_url('assets/DataTables/media/js/jquery.dataTables.js')
 		?>">
 	</script>
-	
+	<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+	$('#productsTable').DataTable({
+		
+		});
+	});
+	</script>
 	</head>
 	<?php 
 		$this->load->view('header');
 	?>
 	<br><br>
 	<?= $this->table->generate($Products) ?>
-	<script type="text/javascript" charset="utf-8">
-	$(document).ready(function() {
-	$('#productsTable').DataTable({
-		});
-	});
-	</script>
 
 	<?php
 		$this->load->view('footer');
 	?>
-	
 
-  	<script type="text/javascript" language="javascript"src="<?= base_url('assets/js/jquery.js') ?>">
- </script>
  <script type="text/javascript" language="javascript"src="<?= base_url('assets/js/bootstrap.min.js') ?>">
  </script>
   <script type="text/javascript" language="javascript"src="<?= base_url('assets/js/price-range.js') ?>">

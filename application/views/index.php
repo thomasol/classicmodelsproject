@@ -136,7 +136,11 @@
 						<?php
 						foreach($featuredItems as $featuredItem)
 						{
-						?>
+							echo form_open('Cartcontroller/addToCart'); 
+
+					        echo form_hidden(array('image' =>$featuredItem['image'], 'name' => $featuredItem['productName'], 'id' => $featuredItem['productCode'],
+				        					 'qty' => '1', 'price' => $featuredItem['MSRP'])); ?>
+							
 							<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
@@ -145,14 +149,21 @@
 											echo '<img src="assets/images/products/' . $featuredItem['image'] . '"); " class="girl img-responsive" alt="" />';
 											echo '<h2>' . $featuredItem['MSRP'] . '</h2>';
 											echo '<p>' . $featuredItem['productName'] . '</p>';
+											?>
+											<?php
 											echo '<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>';
 											?>
 										</div>
 										<div class="product-overlay">
 											<div class="overlay-content">
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+											<?php
+												echo '<h2>' . $featuredItem['MSRP'] . '</h2>';
+												echo '<p>' . $featuredItem['productName'] . '</p>';
+											?>
+											<input type ="submit" class="btn btn-default add-to-cart"> <i class="fa fa-shopping-cart"></i>Add to cart</input>
+												<!-- <button class="btn btn-default add-to-cart" 
+												onclick="location.href='<?php echo base_url();?>index.php/CartController/cart'">
+												<i class="fa fa-shopping-cart"></i>Add to cart</button> -->
 											</div>
 										</div>
 								</div>
@@ -164,6 +175,7 @@
 							</div>
 							</div>
 						<?php
+						echo form_close();
 						}
 						?>
 						

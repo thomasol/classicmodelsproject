@@ -26,7 +26,7 @@ class ProductController extends CI_Controller {
 		$this->table->set_template($tmpl);
 		$this->table->set_heading(array('Product Code', 'Product Name', 'Product Line',
 										'Product Scale', 'Product Vendor', 'Product Description',
-										'Quantity', 'Buy Price', 'MSRP', 'Image'));
+										'Quantity', 'Buy Price', 'MSRP', 'Image', 'Featured'));
 
 		$data['Products'] = $this->ProductsModel->getAllProducts();
 
