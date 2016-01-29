@@ -11,6 +11,7 @@ class UserController extends CI_Controller {
 		$data['sixRandomProducts'] = $this->ProductsModel->getSixRandomProducts();
 		$data['featuredItems'] = $this->ProductsModel->getFeaturedItems();
 		$data['categories'] = $this->ProductsModel->getCategories();
+		$data['vendors'] = $this->ProductsModel->getVendors();
 		$data['b'] = $this->ProductsModel->getAllProducts();
 		if($this->session->userdata('logged_in'))
 		{
@@ -48,16 +49,13 @@ class UserController extends CI_Controller {
 			$password = $this->input->post('password');
 
 			$result = $this->UserModel->login($username, $password);
-			//print_r($result);
 			if($result)
 			{
 				foreach($result as $row) 
 				{
-					$sess_array = array(
-						'username'=>$username
-				);
-				$this->session->set_userdata('logged_in', $sess_array);
-				redirect('HomeController');
+					$sess_array = array('username'=>$username);
+					$this->session->set_userdata('logged_in', $sess_array);
+					redirect('UserController/index');
 				}
 			}
 			else
@@ -128,7 +126,7 @@ class UserController extends CI_Controller {
 				    'username'=>$email
 				);
 				$this->session->set_userdata('logged_in', $sess_array);
-				redirect('HomeController');
+				redirect('UserController/index');
 			}
 			else
 			{
@@ -143,7 +141,7 @@ class UserController extends CI_Controller {
 	{
 		$this->session->unset_userdata('logged_in');
 		$this->session->sess_destroy();
-		redirect('HomeController');
+		redirect('UserController/index');
 	}
 
 	public function contactUs()

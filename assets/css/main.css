@@ -1552,7 +1552,6 @@ h2.title {
   position: absolute;
   top: 11px;
   left:48px;
-
 }
 
 .breadcrumbs .breadcrumb > li + li:before {
@@ -1563,7 +1562,6 @@ h2.title {
   border: 1px solid #E6E4DF;
   margin-bottom: 50px
 }
-
 
 #cart_items .cart_info .cart_menu {
   background: #FE980F;
@@ -1576,7 +1574,6 @@ h2.title {
 #cart_items .cart_info .table.table-condensed thead tr {
   height: 51px;
 }
-
 
 #cart_items .cart_info .table.table-condensed tr {
   border-bottom: 1px solid#F7F7F0
@@ -1591,14 +1588,16 @@ h2.title {
   vertical-align: inherit;
 }
 
-
 #cart_items .cart_info .image {
   padding-left: 30px;
 }
 
-
+.cart_product {
+  zoom: 50%;
+}
 #cart_items .cart_info .cart_description h4 {
   margin-bottom: 0
+  white-space: normal !important;
 }
 
 #cart_items .cart_info .cart_description h4 a {
@@ -1606,13 +1605,11 @@ h2.title {
   font-family: 'Roboto',sans-serif;
   font-size: 20px;
   font-weight: normal;
-
 }
 
 #cart_items .cart_info .cart_description p {
   color:#696763
 }
-
 
 #cart_items .cart_info .cart_price p {
   color:#696763;
@@ -1625,10 +1622,6 @@ h2.title {
   font-size: 24px;
 }
 
-.cart_product {
-  display: block;
-  margin: 15px -70px 10px 25px;
-}
 
 .cart_quantity_button a {
   background:#F0F0E9;
@@ -1652,13 +1645,11 @@ h2.title {
   
 }
 
-
 .cart_delete  {
   display: block;
   margin-right: -12px;
   overflow: hidden;
 }
-
 
 .cart_delete a {
   background:#F0F0E9;
@@ -1780,6 +1771,7 @@ h2.title {
   border: none;
   padding: 5px 15px;
 }
+
 .update{
     margin-left: 40px;
 }
@@ -1788,7 +1780,14 @@ h2.title {
   margin-left: 20px
 }
 
+.logo {
+  zoom: 80%;
+}
 
+.nav.pull-right {
+     float: right;
+    margin-right: 98px; /*set margin this way in your custom styesheet*/
+  }
 
 /*************************
 *******checkout CSS******

@@ -12,7 +12,7 @@ class CartController extends CI_Controller {
 		{
 		    $session_data = $this->session->userdata('logged_in');
 		    $data['username'] = $session_data['username'];	
-		    $this->load->view('headerLoggedIn');	 
+		    $this->load->view('headerLoggedIn', $data);	 
 	        $this->load->view('cart', $data);
 	    }
 	    else
@@ -28,12 +28,13 @@ class CartController extends CI_Controller {
 			'id' => $this->input->post('id'),
 			'name' => $this->input->post('name'),
 			'price' => $this->input->post('price'),
+			'description' => $this->input->post('description'),
 			'qty' => 1
 		);		
 	 
 		$this->cart->insert($insertItem);
-	 
-		$this->load->view('cart');
+	 	redirect('Cartcontroller/cart');
+		//$this->load->view('cart');
 	}
 }
 ?>

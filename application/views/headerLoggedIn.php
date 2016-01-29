@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | Mini Things</title>
+    <title>Mini Things</title>
 
     <link rel="stylesheet" href="<?php echo base_url("assets/css/bootstrap.min.css"); ?>" />
     <link rel="stylesheet" href="<?php echo base_url("assets/css/font-awesome.min.css"); ?>" />
@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="<?php echo base_url("assets/css/animate.css"); ?>" />
     <link rel="stylesheet" href="<?php echo base_url("assets/css/main.css"); ?>" />
     <link rel="stylesheet" href="<?php echo base_url("assets/css/responsive.css"); ?>" />
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -31,41 +35,21 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="logo pull-left">
-							<a href="<?php echo site_url('UserController/index'); ?>"><img src="images/home/logo.png" alt="" /></a>
-						</div>
-						<div class="btn-group pull-right">
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									IRL
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="">UK</a></li>
-									<li><a href="">EU</a></li>
-								</ul>
-							</div>
-							
-							<div class="btn-group">
-								<button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
-									EURO
-									<span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu">
-									<li><a href="">Pound</a></li>
-								</ul>
-							</div>
+							<a href="<?php echo site_url('UserController/index'); ?>">
+							<img class="logo" src="<?php echo base_url("assets/images/logo.jpg"); ?>" alt="" /></a>
 						</div>
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="<?php echo site_url('AccountController/account'); ?>"><i class="fa fa-user"></i> Account</a></li>
+								<li>
+									<a href="<?php echo site_url('AccountController/account'); ?>"><i class="fa fa-user"></i> <?php echo $username;?>'s Account</a>
+								</li>
 								<li><a href="<?php echo site_url('ProductController/checkout'); ?>"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="<?php echo site_url('CheckoutController/checkout'); ?>"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 								<li><a href="<?php echo site_url('CartController/cart'); ?>"></i> Cart</a></li>
 								<li><a href="<?php echo site_url('UserController/logout'); ?>"><i class="fa fa-lock"></i> Logout</a></li>
-								<?php echo "Logged in as " . $username;
-								?>
+								
 
 							</ul>
 						</div>
@@ -98,19 +82,7 @@
 										<li><a href="<?php echo site_url('UserController/login'); ?>">Login</a></li> 
                                     </ul>
                                 </li> 
-								<li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="<?php echo site_url('BlogController/blogList'); ?>">Blog List</a></li>
-										<li><a href="<?php echo site_url('BlogController/blogSingle'); ?>">Blog Single</a></li>
-                                    </ul>
-                                </li> 
-								<li><a href="<?php echo site_url('UserController/contactUs'); ?>">Contact</a></li>
 							</ul>
-						</div>
-					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
 						</div>
 					</div>
 				</div>
